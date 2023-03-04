@@ -94,17 +94,9 @@ df_selection = df_selection[
     df_selection.apply(lambda row: row.astype(str).str.contains(user_select, case=False, na=False).any(), axis=1)]
 
 st.dataframe(df_selection)
+
 # Stats
 total_logs = df_selection.shape[0]
-# average_rating = df_selection[df_selection['Location'].str.contains("PARKING")].shape[0]
-# average_sale_by_transaction = df_selection[df_selection['Location'].str.contains("GLENDON")].shape[0]
-# res_logs = df_selection[df_selection['Location'].str.contains("RESIDENCE")].shape[0]
-
-# average_logs = round(df_selection["Rating"].mean(), 1)
-# star_rating = ":star:" * int(round(average_rating, 0))
-# average_sale_by_transaction = round(df_selection["Total"].mean(), 2)
-
-# leftmost_column = st.columns(1)
 st.write(total_logs)
 try:
     cat_count = (
