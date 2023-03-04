@@ -6,7 +6,7 @@ import altair as alt
 
 @st.experimental_memo
 def convert_df(df):
-   return df.to_csv(index=False).encode('utf-8')
+    return df.to_csv(index=False).encode('utf-8')
 
 
 def gather():
@@ -98,9 +98,7 @@ df_selection = df_selection[
     df_selection.apply(lambda row: row.astype(str).str.contains(user_select, case=False, na=False).any(), axis=1)]
 
 st.dataframe(df_selection)
-
 csv = convert_df(df_selection)
-
 st.download_button(
    "Click Here to Download Filtered Dataframe",
    csv,
@@ -109,7 +107,6 @@ st.download_button(
    key='download-csv'
 )
 st.markdown("""---""")
-
 # Stats
 total_logs = df_selection.shape[0]
 st.write(total_logs)
