@@ -4,6 +4,11 @@ import streamlit as st
 import altair as alt
 
 
+@st.experimental_memo
+def convert_df(df):
+   return df.to_csv(index=False).encode('utf-8')
+
+
 def gather():
     base_url = "https://ckan0.cf.opendata.inter.prod-toronto.ca"
     url = base_url + "/api/3/action/package_show"
