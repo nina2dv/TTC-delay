@@ -2,6 +2,8 @@ import requests
 import pandas as pd
 import streamlit as st
 import altair as alt
+
+
 def gather():
     base_url = "https://ckan0.cf.opendata.inter.prod-toronto.ca"
     url = base_url + "/api/3/action/package_show"
@@ -23,6 +25,7 @@ def gather():
         data = pd.read_excel(my_file.content)
         df.append(data)
     return df
+
 
 if 'df' not in st.session_state:
     df = gather()
@@ -84,10 +87,6 @@ df_selection = st.session_state['df'].query(
     "Day == @day_of_week & Year == @year & Month ==@month & Station == @station & Code == @code & Hour == @hour"
 )
 # ---- MAINPAGE ----
-# st.title(":bar_chart: York University Security Incident Logs")
-
-st.markdown("##")
-
 # User input filter
 user_select = st.text_input('Search Bar', 'Enter to search the dataframe')
 df_selection = df_selection[
